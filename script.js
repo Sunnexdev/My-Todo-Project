@@ -34,16 +34,63 @@ if (testimonials.length) {
     testimonials[currentTestimonial].style.display = 'block';
   }, 6000);
 }
+// FORMS SECTION
+/* const contactForm = document.querySelector('.contact-form');
+// const formMessage = document.querySelector('.form-message');
+
+// if (contactForm) {
+//   contactForm.addEventListener('submit', (event) => {
+//     event.preventDefault();
+//     formMessage.textContent =
+//       'Thanks for reaching out. We will reply within 24 hours.';
+//     contactForm.reset();
+//   });
+// }*/
 
 const contactForm = document.querySelector('.contact-form');
 const formMessage = document.querySelector('.form-message');
 
 if (contactForm) {
-  contactForm.addEventListener('submit', (event) => {
+  contactForm.addEventListener('submit', async (event) => {
     event.preventDefault();
-    formMessage.textContent =
-      'Thanks for reaching out. We will reply within 24 hours.';
-    contactForm.reset();
+
+    const submitBtn = contactForm.querySelector('button[type="submit"]');
+    const originalBtnText = submitBtn.textContent;
+
+    // Feedback during sending
+    submitBtn.textContent = 'Sending...';
+    submitBtn.disabled = true;
+    formMessage.textContent = '';
+
+    const formData = new FormData(contactForm);
+
+    try {
+      const response = await fetch(contactForm.action, {
+        method: 'POST',
+        body: formData,
+        headers: {
+          Accept: 'application/json',
+        },
+      });
+
+      if (response.ok) {
+        formMessage.style.color = 'var(--muted)'; // Uses your site styling
+        formMessage.textContent =
+          'Thanks for reaching out. We will reply within 24 hours.';
+        contactForm.reset();
+      } else {
+        formMessage.style.color = '#e53e3e';
+        formMessage.textContent =
+          'Oops! There was a problem sending your message. Please try again.';
+      }
+    } catch (error) {
+      formMessage.style.color = '#e53e3e';
+      formMessage.textContent =
+        'Network error. Please check your connection and try again.';
+    } finally {
+      submitBtn.textContent = originalBtnText;
+      submitBtn.disabled = false;
+    }
   });
 }
 
