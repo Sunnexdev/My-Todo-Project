@@ -179,3 +179,52 @@ document.addEventListener('keydown', (event) => {
 //   video.play();
 // }
 */
+
+// Hero Slider Logic
+document.addEventListener('DOMContentLoaded', () => {
+  const slider = document.querySelector('.hero-slider');
+  const slides = document.querySelectorAll('.hero-slider .slide');
+  const dots = document.querySelectorAll('.slider-dots .dot');
+
+  if (!slides.length || !slider) return;
+
+  let currentSlide = 0;
+  let direction = 1; // 1 = forward, -1 = backward
+  const intervalTime = 4000;
+
+  function goToSlide(index) {
+    slider.style.transform = `translateX(-${index * 100}%)`;
+    dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
+  }
+
+  function nextSlide() {
+    // Reverse direction when reaching either end
+    if (currentSlide === slides.length - 1) {
+      direction = -1; // Change to backward
+    } else if (currentSlide === 0) {
+      direction = 1; // Change to forward
+    }
+
+    currentSlide += direction;
+    goToSlide(currentSlide);
+  }
+
+  let slideInterval = setInterval(nextSlide, intervalTime);
+
+  dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+      clearInterval(slideInterval);
+      currentSlide = index;
+      goToSlide(currentSlide);
+
+      // Update direction based on manual dot selection
+      if (currentSlide === slides.length - 1) {
+        direction = -1;
+      } else if (currentSlide === 0) {
+        direction = 1;
+      }
+
+      slideInterval = setInterval(nextSlide, intervalTime);
+    });
+  });
+});

@@ -154,6 +154,14 @@
       images: [
         'jerimic images/Student Picture/jerimicstudio__2026-06-04T145110.000Z(1).webp',
         'jerimic images/Student Picture/jerimicstudio__2026-06-04T145110.000Z.webp',
+        'jerimic images/Student Picture/IMGL0498-Edit.webp',
+        'jerimic images/Student Picture/IMGL0506-Edit_(2).webp',
+        'jerimic images/Student Picture/IMGL0525-Edit.webp',
+        'jerimic images/Student Picture/IMGL0532.webp',
+        'jerimic images/Student Picture/IMGL0536-Edit (1).webp',
+        'jerimic images/Student Picture/IMGL0584.webp',
+        'jerimic images/Student Picture/IMGL0609-Edit.webp',
+        'jerimic images/Student Picture/IMGL0672.webp',
       ],
     },
     'natural-connection': {
