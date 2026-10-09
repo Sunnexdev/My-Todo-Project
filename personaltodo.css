@@ -7,7 +7,7 @@ body {
 }
 .container {
   margin: 50px auto;
-  width: clamp(330px, 50%, 800px);
+  width: clamp(330px, 60%, 800px);
   background-color: #eeead9;
   border-radius: 10px;
   padding: 20px;
