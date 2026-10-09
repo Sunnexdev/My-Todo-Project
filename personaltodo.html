@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Person Todo</title>
+    <link rel="stylesheet" href="personaltodo.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>My Todo List</h1>
+      <p class="below-p">Small step ones. One task at a time</p>
+      <div class="grid-container">
+        <input type="text" placeholder="what do you need to do" id="input-El" />
+        <button id="input-btn" onclick="addTodo()">Add Task</button>
+      </div>
+
+      <div id="todoList-counter" class="todo-counter">
+        <div id="count-el">0 tasks remaining</div>
+        <div>Clear Compledted</div>
+      </div>
+      <div class="todo-grid" id="todoList-el"></div>
+      <p class="footie" id="taskavail-el">No Task Yet. Add Your First Task!</p>
+      <p class="footie">Do Things Mindfully!</p>
+    </div>
+
+    <script src="personaltodo.js"></script>
+  </body>
+</html>
